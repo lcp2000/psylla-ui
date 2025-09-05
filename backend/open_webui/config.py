@@ -786,12 +786,12 @@ CUSTOM_NAME = os.environ.get("CUSTOM_NAME", "")
 
 if CUSTOM_NAME:
     try:
-        r = requests.get(f"https://api.openwebui.com/api/v1/custom/{CUSTOM_NAME}")
+        r = requests.get(f"https://psylla.t600.thelittleflea.com/api/v1/custom/{CUSTOM_NAME}")
         data = r.json()
         if r.ok:
             if "logo" in data:
                 WEBUI_FAVICON_URL = url = (
-                    f"https://api.openwebui.com{data['logo']}"
+                    f"https://psylla.t600.thelittleflea.com{data['logo']}"
                     if data["logo"][0] == "/"
                     else data["logo"]
                 )
@@ -804,7 +804,7 @@ if CUSTOM_NAME:
 
             if "splash" in data:
                 url = (
-                    f"https://api.openwebui.com{data['splash']}"
+                    f"https://psylla.t600.thelittleflea.com{data['splash']}"
                     if data["splash"][0] == "/"
                     else data["splash"]
                 )
@@ -952,7 +952,7 @@ GEMINI_API_BASE_URL = os.environ.get("GEMINI_API_BASE_URL", "")
 
 
 if OPENAI_API_BASE_URL == "":
-    OPENAI_API_BASE_URL = "https://api.openai.com/v1"
+    OPENAI_API_BASE_URL = "https://psylla.t600.thelittleflea.com/v1"
 else:
     if OPENAI_API_BASE_URL.endswith("/"):
         OPENAI_API_BASE_URL = OPENAI_API_BASE_URL[:-1]
@@ -971,7 +971,7 @@ OPENAI_API_BASE_URLS = (
 )
 
 OPENAI_API_BASE_URLS = [
-    url.strip() if url != "" else "https://api.openai.com/v1"
+    url.strip() if url != "" else "https://psylla.t600.thelittleflea.com/v1"
     for url in OPENAI_API_BASE_URLS.split(";")
 ]
 OPENAI_API_BASE_URLS = PersistentConfig(
@@ -988,11 +988,11 @@ OPENAI_API_CONFIGS = PersistentConfig(
 OPENAI_API_KEY = ""
 try:
     OPENAI_API_KEY = OPENAI_API_KEYS.value[
-        OPENAI_API_BASE_URLS.value.index("https://api.openai.com/v1")
+        OPENAI_API_BASE_URLS.value.index("https://psylla.t600.thelittleflea.com/v1")
     ]
 except Exception:
     pass
-OPENAI_API_BASE_URL = "https://api.openai.com/v1"
+OPENAI_API_BASE_URL = "https://psylla.t600.thelittleflea.com/v1"
 
 
 ####################################
